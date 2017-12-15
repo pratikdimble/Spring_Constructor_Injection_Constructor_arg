@@ -1,13 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"  
-	xmlns:c="http://www.springframework.org/schema/c"  
+	xmlns:p="http://www.springframework.org/schema/p"  
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"    
  	xsi:schemaLocation="http://www.springframework.org/schema/beans      
 		http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+<!-- Bean tag for Address class (child Table) -->
+<bean class="com.pratik.beans.Address" name="aobj">
+	<constructor-arg>
+		<value>1001</value>
+	</constructor-arg>
+	<constructor-arg>
+		<value>Pune</value>
+	</constructor-arg>
+	<constructor-arg>
+		<set>
+			<value>12.36</value>
+			<value>89.65</value>		
+		</set>
+	</constructor-arg>
+	<constructor-arg>
+		<map>
+			<entry key="1" value="Swargate" />
+			<entry key="2" value="Katraj"/>
+		</map>
+	</constructor-arg>
+</bean>
+		<!-- Bean tag for Employee class (Parent Table) -->
+		<bean class="com.pratik.beans.Employee" name="emp">
+			<constructor-arg>
+				<value>11</value>		
+			</constructor-arg>
+			<constructor-arg>
+				<value>Pratik</value>
+			</constructor-arg>
+			<constructor-arg>
+				<list>
+					<value>Hibernate</value>
+					<value>Spring</value>
+				</list>		
+			</constructor-arg>
+			<constructor-arg>
+				<props>
+					<prop key="HQL">HQL</prop>
+					<prop key="CDI">CDI</prop>
+				</props>
+			</constructor-arg>
+			<constructor-arg>
+				<ref bean="aobj"/>
+			</constructor-arg>
 		
-			<bean class="com.app.beans.Employee" 
-                 name="emp"
-			                  c:id="5"
-                            c:name="pratik"/>
-	
+		</bean>
 		</beans>
